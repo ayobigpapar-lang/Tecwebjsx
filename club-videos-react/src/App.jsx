@@ -13,11 +13,15 @@ function App() {
     setDarkMode(!darkMode) // Corregido: función flecha estándar
   }
 
-  const peliculas = [
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+/*   const peliculas = [
     { id: 1, titulo: 'El Padrino', año: 1972, director: 'Francis Ford Coppola', calificacion: 9.2, imagen: 'https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg', genero :'Drama' },
     { id: 2, titulo: 'Titanic', año: 1997, director: 'James Cameron', calificacion: 8.9, imagen: 'https://image.tmdb.org/t/p/w500/9xjZS2rlVxm8SFx8kPC3aIGCOYQ.jpg', genero :'Romance' },
     { id: 3, titulo: 'Inception', año: 2010, director: 'Christopher Nolan', calificacion: 9.0, imagen: 'https://image.tmdb.org/t/p/w500/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg',genero :'Ciencia Ficción' }
-  ];
+  ]; */
+  const [peliculas,setPeliculas]=useState([])
 
   const generos = ['', 'Drama', 'Romance', 'Ciencia Ficción', 'Fantasía'];
 
@@ -30,7 +34,24 @@ function App() {
   return (
     <div className={`app ${darkMode ? 'dark' : ''}`}> {/* Corregido: ternario dentro de las llaves */}
       <Header darkMode={darkMode} onToggle={toggleDarkMode} />
-      <main className='main'>
+      {
+        loading && (
+          <div className='loading'>
+            <div className='spinner'></div>
+            <p>Cargando películas....</p>
+          </div>
+        )
+      }
+      {
+        error && (
+          <div className='error'>
+            <p>{error}</p>
+          </div>
+        )
+      }
+      {
+        !loading && !error &&(
+<main className='main'>
         <h2 className='main__title'>Películas Destacadas</h2>
         <div className='controles__search'>
           <input
@@ -98,6 +119,11 @@ function App() {
           }
         </div>
       </main>
+
+        )
+      }
+
+      <Footer \>
     </div>
   );
 }
