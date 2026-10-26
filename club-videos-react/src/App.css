@@ -1,0 +1,177 @@
+/* Variables globales */
+:root {
+    --color-background: #f4f4f4;
+    --color-background-card: #ffffff;
+    --color-text: #333333;
+    --color-text-light: #666666;
+    --color-text-white: #ffffff;
+    --color-primary: #003366;
+    --color-secondary: #ffd700;
+    --color-border: #dddddd;
+    --shadow-medium: 0 4px 8px rgba(0,0,0,0.15);
+    --shadow-large: 0 8px 16px rgba(0,0,0,0.2);
+    --spacing-small: 8px;
+    --spacing-medium: 16px;
+    --spacing-large: 24px;
+    --spacing-xl: 32px;
+    --border-radius-medium: 8px;
+    --border-radius-large: 12px;
+}
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    background-color: var(--color-background);
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+.app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-medium) var(--spacing-xl);
+    background-color: var(--color-primary);
+    color: var(--color-text-white);
+    box-shadow: var(--shadow-medium);
+}
+
+.header__logo {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-text-white);
+}
+
+.header__toggle {
+    background: none;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    color: var(--color-text-white);
+    font-size: 1.5rem;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.header__toggle:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: rotate(20deg);
+}
+
+
+.main {
+    flex: 1;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: var(--spacing-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-large);
+}
+
+.main__title {
+    font-size: 1.75rem;
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: var(--spacing-medium);
+}
+
+
+.controles {
+    display: grid;
+    /* 3 columnas: buscador grande, select mediano, botón auto */
+    grid-template-columns: 2fr 1fr auto;
+    gap: var(--spacing-medium);
+    padding: var(--spacing-large);
+    background-color: var(--color-background-card);
+    border-radius: var(--border-radius-large);
+    box-shadow: var(--shadow-medium);
+    /* Alinear al centro verticalmente */
+    align-items: center;
+}
+
+.controles__search,
+.controles__select {
+    padding: var(--spacing-medium);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-medium);
+    font-size: 1rem;
+    font-family: 'Roboto', Arial, sans-serif;
+    background-color: var(--color-background);
+    color: var(--color-text);
+    transition: all 0.2s ease;
+}
+
+.controles__search:focus,
+.controles__select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.2);
+}
+
+.controles__clear {
+    padding: var(--spacing-medium) var(--spacing-large);
+    background-color: #dc3545;
+    color: var(--color-text-white);
+    border: none;
+    border-radius: var(--border-radius-medium);
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.controles__clear:hover {
+    opacity: 0.85;
+    transform: translateY(-2px);
+}
+
+
+.resultados {
+    text-align: center;
+    font-size: 1rem;
+    color: var(--color-text-light);
+}
+
+
+.peliculas-grid {
+    display: grid;
+    /* grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); */
+    /* 4 columnas exactas en desktop */
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-large);
+}
+
+.no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: var(--spacing-xl);
+    font-size: 1.25rem;
+    color: var(--color-text-light);
+}
+
+
+.pelicula-card {
+    background-color: var(--color-background-card);
+    border-radius: var(--border-radius-large);
+    overflow: hidden;
+    box-shadow: var(--shadow-medium);
+    transition: all 0.3
+}
